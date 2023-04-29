@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Kernel do
+defmodule ElixirJourney.Kernel.Guards do
   def not_equal_operator do
     # {true, false}
     {1 != 2, 1 != 1.0}
@@ -114,6 +114,7 @@ defmodule ElixirJourney.Kernel do
     # 2
     tuple_size({:a, 1})
   end
+
   def not_operator do
     not false
   end
