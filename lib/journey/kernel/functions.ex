@@ -49,4 +49,57 @@ defmodule ElixirJourney.Kernel.Functions do
     # {false, true}
     {Enum.empty?([1]) || Enum.empty?([1]), List.first([]) || true}
   end
+
+  def tap_example do
+    # 2
+    %{a: 1}
+    |> Map.update!(:a, &(&1 + 1))
+    |> tap(&IO.inspect(&1.a))
+    |> Map.update!(:a, &(&1 * 2))
+  end
+
+  def then_example do
+    # ["b", "c"]
+    1 |> then(fn x -> Enum.drop(["a", "b", "c"], x) end)
+  end
+
+  def throw_example do
+    # 1, 2, 3, 4, 5
+    try do
+      Enum.to_list(1..10)
+      |> Enum.each(fn x ->
+        x == 5 && throw(x)
+      end)
+    catch
+      value -> value
+    end
+  end
+
+  def to_charlistx_example do
+    # 'foo'
+    to_charlist(:foo)
+  end
+
+  def to_string_example do
+    # "foo"
+    to_string(:foo)
+  end
+
+  def unless_example do
+    list = [2, 2]
+
+    unless Enum.sum(list) == 5 do
+      # nil
+      unless(length(list) == 2, do: "Math still works")
+    else
+      "Math is broken"
+    end
+  end
+
+  def update_in_example do
+    options = %{foo: %{bar: 0}}
+
+    # {%{foo: %{bar: 1}}, %{foo: %{bar: 1}}}
+    {update_in(options, [:foo, :bar], &(&1 + 1)), update_in(options.foo.bar, &(&1 + 1))}
+  end
 end
