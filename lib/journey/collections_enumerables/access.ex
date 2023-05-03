@@ -1,4 +1,4 @@
-defmodule ElixirJourney.CollectionsAndEumerables do
+defmodule ElixirJourney.CollectionsAndEumerables.Access do
   def behaviour do
     map = %{1.0 => "1", "Hello" => "World", a: "A"}
 
