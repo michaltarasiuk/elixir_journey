@@ -9,21 +9,29 @@ defmodule ElixirJourney.CollectionsAndEumerables.Access do
   def all_example do
     list = [%{name: "john"}, %{name: "mary"}]
 
+    result_1 = get_in(list, [Access.all(), :name])
+
+    result_2 =
+      get_and_update_in(list, [Access.all(), :name], fn prev ->
+        {prev, String.upcase(prev)}
+      end)
+
     # {["john", "mary"], {["john", "mary"], [%{name: "JOHN"}, %{name: "MARY"}]}}
-    {get_in(list, [Access.all(), :name]),
-     get_and_update_in(list, [Access.all(), :name], fn prev ->
-       {prev, String.upcase(prev)}
-     end)}
+    {result_1, result_2}
   end
 
   def at_example do
     list = [%{name: "john"}, %{name: "mary"}]
 
+    result_1 = get_in(list, [Access.at(-1), :name])
+
+    result_2 =
+      get_and_update_in(list, [Access.at(0), :name], fn prev ->
+        {prev, String.upcase(prev)}
+      end)
+
     # {"mary", {"john", [%{name: "JOHN"}, %{name: "mary"}]}}
-    {get_in(list, [Access.at(-1), :name]),
-     get_and_update_in(list, [Access.at(0), :name], fn prev ->
-       {prev, String.upcase(prev)}
-     end)}
+    {result_1, result_2}
   end
 
   def required_at_example do
@@ -37,11 +45,15 @@ defmodule ElixirJourney.CollectionsAndEumerables.Access do
   def elem_example do
     map = %{user: {"john", 27}}
 
+    result_1 = get_in(map, [:user, Access.elem(0)])
+
+    result_2 =
+      get_and_update_in(map, [:user, Access.elem(0)], fn prev ->
+        {prev, String.upcase(prev)}
+      end)
+
     # {"john", {"john", %{user: {"JOHN", 27}}}}
-    {get_in(map, [:user, Access.elem(0)]),
-     get_and_update_in(map, [:user, Access.elem(0)], fn prev ->
-       {prev, String.upcase(prev)}
-     end)}
+    {result_1, result_2}
   end
 
   def fetch_example do
@@ -64,9 +76,12 @@ defmodule ElixirJourney.CollectionsAndEumerables.Access do
   end
 
   def get_example do
+    result_1 = Access.get(%{name: "john"}, :name, "default name")
+    result_2 = Access.get(%{name: "john"}, :age, 25)
+    result_3 = Access.get([ordered: true], :timeout)
+
     # {"john", 25, nil}
-    {Access.get(%{name: "john"}, :name, "default name"), Access.get(%{name: "john"}, :age, 25),
-     Access.get([ordered: true], :timeout)}
+    {result_1, result_2, result_3}
   end
 
   def get_and_update_example do
@@ -84,14 +99,18 @@ defmodule ElixirJourney.CollectionsAndEumerables.Access do
   def required_key_example do
     map = %{user: %{name: "john"}}
 
+    result_1 = get_in(map, [Access.key!(:user), Access.key!(:name)])
+
+    result_2 =
+      get_and_update_in(map, [Access.key!(:user), Access.key!(:name)], fn prev ->
+        {prev, String.upcase(prev)}
+      end)
+
     # ** (KeyError) key :unknown not found in: %{name: "john"}
     # get_in(map, [Access.key!(:user), Access.key!(:unknown)])
 
     # {"john", {"john", %{user: %{name: "JOHN"}}}}
-    {get_in(map, [Access.key!(:user), Access.key!(:name)]),
-     get_and_update_in(map, [Access.key!(:user), Access.key!(:name)], fn prev ->
-       {prev, String.upcase(prev)}
-     end)}
+    {result_1, result_2}
   end
 
   def pop_example do
@@ -108,6 +127,13 @@ defmodule ElixirJourney.CollectionsAndEumerables.Access do
       %{name: "vitor", salary: 25}
     ]
 
+    result_1 = get_in(list, [Access.slice(1..2), :name])
+
+    result_2 =
+      get_and_update_in(list, [Access.slice(1..3//2), :name], fn name ->
+        {name, String.upcase(name)}
+      end)
+
     # {["francine", "vitor"],
     #  {["francine"],
     #   [
@@ -115,9 +141,6 @@ defmodule ElixirJourney.CollectionsAndEumerables.Access do
     #     %{name: "FRANCINE", salary: 30},
     #     %{name: "vitor", salary: 25}
     #   ]}}
-    {get_in(list, [Access.slice(1..2), :name]),
-     get_and_update_in(list, [Access.slice(1..3//2), :name], fn name ->
-       {name, String.upcase(name)}
-     end)}
+    {result_1, result_2}
   end
 end
