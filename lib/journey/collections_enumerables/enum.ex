@@ -539,4 +539,203 @@ defmodule ElixirJourney.CollectionsAndEumerables.Enum do
     # {true, false, false, true, false, true}
     {result_1, result_2, result_3, result_4, result_5, result_6}
   end
+
+  def mix_example do
+    # list
+    result_1 = Enum.min([1, 2, 3])
+    result_2 = Enum.min([], &>=/2, fn -> 0 end)
+
+    # range
+    result_3 = Enum.min(1..5)
+
+    # date
+    result_4 = Enum.min([~D[2017-03-31], ~D[2017-04-01]])
+    result_5 = Enum.min([~D[2017-03-31], ~D[2017-04-01]], Date)
+
+    # {1, 0, 1, ~D[2017-04-01], ~D[2017-03-31]}
+    {result_1, result_2, result_3, result_4, result_5}
+  end
+
+  def min_by_example do
+    # list
+    result_1 = Enum.min_by(["a", "aa", "aaa"], fn x -> String.length(x) end)
+    result_2 = Enum.min_by(["a", "aa", "aaa", "b", "bbb"], &String.length/1)
+
+    users = [
+      %{name: "Ellis", birthday: ~D[1943-05-11]},
+      %{name: "Lovelace", birthday: ~D[1815-12-10]},
+      %{name: "Turing", birthday: ~D[1912-06-23]}
+    ]
+
+    result_3 = Enum.min_by(users, & &1.birthday, Date)
+
+    # map
+    result_4 = Enum.min_by(%{John: 22, Mike: 25}, &elem(&1, 1))
+
+    # {"a", "a", %{birthday: ~D[1815-12-10], name: "Lovelace"}, {:John, 22}}
+    {result_1, result_2, result_3, result_4}
+  end
+
+  def min_max_example do
+    # list
+    result_1 = Enum.min_max([2, 3, 1])
+    result_2 = Enum.min_max([], fn -> {nil, nil} end)
+    result_3 = Enum.min_max([1])
+
+    # ** (Enum.EmptyError) empty error
+    # Enum.min_max([])
+
+    # map
+    result_4 = Enum.min_max(%{a: 1, b: 2, c: 3})
+
+    # range
+    result_5 = Enum.min_max(1..5)
+
+    # {{1, 3}, {nil, nil}, {1, 1}, {{:a, 1}, {:c, 3}}, {1, 5}}
+    {result_1, result_2, result_3, result_4, result_5}
+  end
+
+  # TODO
+  def min_max_by_example do
+  end
+
+  # TODO
+  def product_example do
+  end
+
+  # TODO
+  def random_example do
+  end
+
+  # TODO
+  def reduce_2_example do
+  end
+
+  # TODO
+  def reduce_3_example do
+  end
+
+  # TODO
+  def reduce_while_example do
+  end
+
+  # TODO
+  def reject_example do
+  end
+
+  # TODO
+  def reverse_example do
+  end
+
+  # TODO
+  def reverse_slice_example do
+  end
+
+  # TODO
+  def scan_2_example do
+  end
+
+  # TODO
+  def scan_3_example do
+  end
+
+  # TODO
+  def shuffle_example do
+  end
+
+  # TODO
+  def slice_2_example do
+  end
+
+  # TODO
+  def slice_3_example do
+  end
+
+  # TODO
+  def slide_example do
+  end
+
+  # TODO
+  def sort_1_example do
+  end
+
+  # TODO
+  def sort_2_example do
+  end
+
+  # TODO
+  def sort_by_example do
+  end
+
+  # TODO
+  def split_example do
+  end
+
+  # TODO
+  def split_while_example do
+  end
+
+  # TODO
+  def split_with_example do
+  end
+
+  # TODO
+  def sum_example do
+  end
+
+  # TODO
+  def take_example do
+  end
+
+  # TODO
+  def take_every_example do
+  end
+
+  # TODO
+  def take_random_example do
+  end
+
+  # TODO
+  def take_while do
+  end
+
+  # TODO
+  def uniq_example do
+  end
+
+  # TODO
+  def uniq_by_example do
+  end
+
+  # TODO
+  def unzip_example do
+  end
+
+  # TODO
+  def with_index_example do
+  end
+
+  # TODO
+  def zip_1_example do
+  end
+
+  # TODO
+  def zip_2_example do
+  end
+
+  # TODO
+  def zip_reduce_3_example do
+  end
+
+  # TODO
+  def zip_reduce_4_example do
+  end
+
+  # TODO
+  def zip_with_2_example do
+  end
+
+  # TODO
+  def zip_with_3_example do
+  end
 end
