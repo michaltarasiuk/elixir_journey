@@ -1,3 +1,4 @@
 {
-  "elixirLS.dialyzerEnabled": false
+  "elixirLS.dialyzerEnabled": false,
+  "editor.fontSize": 13.5
 }

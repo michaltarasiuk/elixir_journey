@@ -124,8 +124,10 @@ defmodule ElixirJourney.CollectionsAndEumerables.Enum do
   end
 
   def concat_1_example do
-    # list
+    # range
     result_1 = Enum.concat([1..3, 4..6, 7..9])
+
+    # list
     result_2 = Enum.concat([[1, [2], 3], [4], [5, 6]])
 
     # map
@@ -136,8 +138,10 @@ defmodule ElixirJourney.CollectionsAndEumerables.Enum do
   end
 
   def concat_2_example do
-    # list
+    # range
     result_1 = Enum.concat(1..3, 4..6)
+
+    # list
     result_2 = Enum.concat([1, 2, 3], [4, 5, 6])
 
     # map
@@ -278,7 +282,6 @@ defmodule ElixirJourney.CollectionsAndEumerables.Enum do
     # map
     result_3 = Enum.fetch(%{a: 1, b: 2}, 2)
     result_4 = Enum.fetch(%{a: 1, b: 2}, -1)
-
 
     # {{:ok, 2}, :error, :error, {:ok, {:b, 2}}}
     {result_1, result_2, result_3, result_4}
@@ -464,7 +467,6 @@ defmodule ElixirJourney.CollectionsAndEumerables.Enum do
         x |> Tuple.to_list() |> Enum.join()
       end)
 
-
     {result_1, result_2}
   end
 
@@ -483,5 +485,58 @@ defmodule ElixirJourney.CollectionsAndEumerables.Enum do
 
   # TODO
   def map_reduce_example do
+  end
+
+  def max_example do
+    # list
+    result_1 = Enum.max([1, 2, 3])
+    result_2 = Enum.max([], &>=/2, fn -> 0 end)
+
+    # range
+    result_3 = Enum.max(1..5)
+
+    # date
+    result_4 = Enum.max([~D[2017-03-31], ~D[2017-04-01]])
+    result_5 = Enum.max([~D[2017-03-31], ~D[2017-04-01]], Date)
+
+    # {3, 0, 5, ~D[2017-03-31], ~D[2017-04-01]}
+    {result_1, result_2, result_3, result_4, result_5}
+  end
+
+  def max_by_example do
+    # list
+    result_1 = Enum.max_by(["a", "aa", "aaa"], fn x -> String.length(x) end)
+    result_2 = Enum.max_by(["a", "aa", "aaa", "b", "bbb"], &String.length/1)
+
+    users = [
+      %{name: "Ellis", birthday: ~D[1943-05-11]},
+      %{name: "Lovelace", birthday: ~D[1815-12-10]},
+      %{name: "Turing", birthday: ~D[1912-06-23]}
+    ]
+
+    result_3 = Enum.max_by(users, & &1.birthday, Date)
+
+    # map
+    result_4 = Enum.max_by(%{John: 22, Mike: 25}, &elem(&1, 1))
+
+    # {"aaa", "aaa", %{birthday: ~D[1943-05-11], name: "Ellis"}, {:Mike, 25}}
+    {result_1, result_2, result_3, result_4}
+  end
+
+  def member_example do
+    # range
+    result_1 = Enum.member?(1..10, 5)
+    result_2 = Enum.member?(1..10, 5.0)
+
+    # list
+    result_3 = Enum.member?([1.0, 2.0, 3.0], 2)
+    result_4 = Enum.member?([1.0, 2.0, 3.0], 2.000)
+    result_5 = Enum.member?([:a, :b, :c], :d)
+
+    # map
+    result_6 = Enum.member?(%{a: 1, b: 2}, {:a, 1})
+
+    # {true, false, false, true, false, true}
+    {result_1, result_2, result_3, result_4, result_5, result_6}
   end
 end
