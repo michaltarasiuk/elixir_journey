@@ -707,20 +707,44 @@ defmodule ElixirJourney.CollectionsAndEumerables.Enum do
   def uniq_by_example do
   end
 
-  # TODO
   def unzip_example do
   end
 
-  # TODO
   def with_index_example do
+    # list
+    result_1 = Enum.with_index([1, 2], 1)
+
+    # range
+    result_2 = Enum.with_index(1..2)
+
+    # map
+    result_3 = Enum.with_index(%{a: 1, b: 2})
+
+    # {[{1, 1}, {2, 2}], [{1, 0}, {2, 1}], [{{:a, 1}, 0}, {{:b, 2}, 1}]}
+    {result_1, result_2, result_3}
   end
 
-  # TODO
   def zip_1_example do
+    # list
+    result_1 = Enum.zip([[:a, :b], [1, 2]])
+    result_2 = Enum.zip([[:a, :b, :c], [1, 2]])
+
+    # range
+    result_3 = Enum.zip(1..3, 1..2)
+
+    # {[a: 1, b: 2], [a: 1, b: 2], [{1, 1}, {2, 2}]}
+    {result_1, result_2, result_3}
   end
 
-  # TODO
   def zip_2_example do
+    # list
+    result_1 = Enum.zip([1, 2, 3], [:a, :b, :c])
+
+    # map
+    result_2 = Enum.zip(%{a: 1, b: 2}, %{c: 3, d: 4})
+
+    # {[{1, :a}, {2, :b}, {3, :c}], [{{:a, 1}, {:c, 3}}, {{:b, 2}, {:d, 4}}]}
+    {result_1, result_2}
   end
 
   # TODO
