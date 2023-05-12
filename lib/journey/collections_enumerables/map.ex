@@ -1,7 +1,9 @@
 defmodule ElixirJourney.CollectionsAndEumerables.Map do
   def delete_example do
-    # %{b: 2}
-    Map.delete(%{a: 1, b: 2}, :a)
+    map = %{a: 1, b: 2}
+
+    # {%{b: 2}, %{a: 1, b: 2}}
+    {Map.delete(map, :a), Map.delete(map, :c)}
   end
 
   def drop_example do
@@ -198,5 +200,65 @@ defmodule ElixirJourney.CollectionsAndEumerables.Map do
   def reject_example do
     # %{two: 2}
     Map.reject(%{one: 1, two: 2, three: 3}, fn {_key, val} -> rem(val, 2) == 1 end)
+  end
+
+  def replace_example do
+    result_1 = Map.replace(%{a: 1, b: 2}, :a, 3)
+    result_2 = Map.replace(%{a: 1}, :b, 2)
+
+    # {%{a: 3, b: 2}, %{a: 1}}
+    {result_1, result_2}
+  end
+
+  def required_replace_example do
+    # ** (KeyError) key :b not found in: %{a: 1}
+    # Map.replace!(%{a: 1}, :b, 2)
+
+    # %{a: 2, b: 2}
+    Map.replace!(%{a: 1, b: 2}, :a, 2)
+  end
+
+  def replace_lazy_example do
+    map = %{a: 1, b: 2}
+
+    result_1 = Map.replace_lazy(map, :a, fn x -> x * 2 end)
+    result_2 = Map.replace_lazy(map, :c, fn x -> x * 2 end)
+
+    # {%{a: 2, b: 2}, %{a: 1, b: 2}}
+    {result_1, result_2}
+  end
+
+  def split_example do
+    # {%{b: 2, c: 3}, %{a: 1}}
+    Map.split(%{a: 1, b: 2, c: 3}, [:b, :c])
+  end
+
+  def to_list_example do
+    result_1 = Map.to_list(%{a: 1})
+    result_2 = Map.to_list(%{1 => 2})
+
+    # {[a: 1], [{1, 2}]}
+    {result_1, result_2}
+  end
+
+  def update_example do
+    result_1 = Map.update(%{a: 1}, :a, 0, fn x -> x * 2 end)
+    result_2 = Map.update(%{a: 1}, :b, 0, fn x -> x * 2 end)
+
+    # {%{a: 2}, %{a: 1, b: 0}}
+    {result_1, result_2}
+  end
+
+  def required_update_example do
+    # ** (KeyError) key :b not found in: %{a: 1}
+    # Map.update!(%{a: 1}, :b, &(&1 * 2))
+
+    # %{a: 2}
+    Map.update!(%{a: 1}, :a, &(&1 * 2))
+  end
+
+  def values_example do
+    # [1, 2]
+    Map.values(%{a: 1, b: 2})
   end
 end
