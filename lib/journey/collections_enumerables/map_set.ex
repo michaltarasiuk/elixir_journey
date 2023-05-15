@@ -69,4 +69,48 @@ defmodule ElixirJourney.CollectionsAndEumerables.MapSet do
     # MapSet.new([2, 4])
     MapSet.new([1, 2, 1], fn x -> 2 * x end)
   end
+
+  def put_example do
+    result_1 = MapSet.put(MapSet.new([1, 2, 3]), 3)
+    result_2 = MapSet.put(MapSet.new([1, 2, 3]), 4)
+
+    # {MapSet.new([1, 2, 3]), MapSet.new([1, 2, 3, 4])}
+    {result_1, result_2}
+  end
+
+  def reject_example do
+    result_1 = MapSet.reject(MapSet.new(1..5), fn x -> rem(x, 2) != 0 end)
+    result_2 = MapSet.reject(MapSet.new(["a", :b, "c"]), &is_atom/1)
+
+    # {MapSet.new([2, 4]), MapSet.new(["a", "c"])}
+    {result_1, result_2}
+  end
+
+  def size_example do
+    # 3
+    MapSet.size(MapSet.new([1, 2, 3]))
+  end
+
+  def subset_example do
+    result_1 = MapSet.subset?(MapSet.new([1, 2]), MapSet.new([1, 2, 3]))
+    result_2 = MapSet.subset?(MapSet.new([1, 2, 3]), MapSet.new([1, 2]))
+
+    # {true, false}
+    {result_1, result_2}
+  end
+
+  def symmetric_difference_example do
+    # MapSet.new([1, 4])
+    MapSet.symmetric_difference(MapSet.new([1, 2, 3]), MapSet.new([2, 3, 4]))
+  end
+
+  def to_list_example do
+    # [1, 2, 3]
+    MapSet.to_list(MapSet.new([1, 2, 3]))
+  end
+
+  def union_example do
+    # MapSet.new([1, 2, 3, 4])
+    MapSet.union(MapSet.new([1, 2]), MapSet.new([2, 3, 4]))
+  end
 end
