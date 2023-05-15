@@ -31,6 +31,7 @@ defmodule ElixirJourney.CollectionsAndEumerables.Map do
     # ** (KeyError) key :b not found in: %{a: 1}
     # Map.fetch!(%{a: 1}, :b)
 
+    # 1
     Map.fetch!(%{a: 1}, :a)
   end
 
