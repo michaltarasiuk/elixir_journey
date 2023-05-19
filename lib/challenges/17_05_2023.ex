@@ -1,4 +1,5 @@
 defmodule ElixirJourney.Challenges.SeventeenthMay2023 do
+  # truth_check_collection
   def truth_check_collection do
     users = [%{user: "Tinky-Winky", sex: "male"}, %{user: "Dipsy", sex: "male"}]
 
