@@ -5,14 +5,14 @@ defmodule ElixirJourney.Challenges.TwentyOnethMay2023 do
     |> Enum.map(&Access.key(&1, %{}))
   end
 
-  def unflatten_map(key, value) do
+  def unflatten_map(key, value) when is_binary(key) do
     splitted_key = split_key(key)
 
     put_in(%{}, splitted_key, value)
   end
 
-  def unflatten_map(map) do
-    Enum.reduce(map, %{}, fn {key, value}, acc ->
+  def unflatten_map(term) when is_map(term) do
+    Enum.reduce(term, %{}, fn {key, value}, acc ->
       Map.merge(acc, unflatten_map(key, value))
     end)
   end
