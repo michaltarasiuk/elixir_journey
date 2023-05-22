@@ -2,11 +2,7 @@ defmodule ElixirJourney.Challenges.TwentythMay2023 do
   # nest
   @link :parent_id
 
-  def find_nest_item(items, id_key, id) when is_list(items) do
-    Enum.find(items, &(Map.fetch!(&1, id_key) === id))
-  end
-
-  def nest(items, id \\ nil) when is_list(items) do
+  defp nest(items, id \\ nil) when is_list(items) do
     items
     |> Enum.filter(&(Map.fetch!(&1, @link) === id))
     |> Enum.map(fn item ->

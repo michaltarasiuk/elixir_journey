@@ -19,7 +19,7 @@ defmodule ElixirJourney.Challenges.FifteenthMay2023 do
   end
 
   # compact
-  def is_empty(term) do
+  defp is_empty(term) do
     cond do
       is_map(term) ->
         map_size(term) === 0
@@ -35,7 +35,7 @@ defmodule ElixirJourney.Challenges.FifteenthMay2023 do
     end
   end
 
-  def compact(term) do
+  defp compact(term) do
     cond do
       is_map(term) ->
         Map.filter(term, &elem(&1, 1))

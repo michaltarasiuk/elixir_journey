@@ -1,14 +1,14 @@
 defmodule ElixirJourney.Challenges.NineteenthMay2023 do
   # flatten_map
-  def to_flatten_map(term, _key) when is_map(term) do
+  defp to_flatten_map(term, _key) when is_map(term) do
     term |> flatten_map()
   end
 
-  def to_flatten_map(term, key) do
+  defp to_flatten_map(term, key) do
     Map.new([{key, term}])
   end
 
-  def flatten_map(map) do
+  defp flatten_map(map) do
     map
     |> Map.keys()
     |> Enum.reduce(%{}, &Map.merge(&2, Map.get(map, &1) |> to_flatten_map(&1)))

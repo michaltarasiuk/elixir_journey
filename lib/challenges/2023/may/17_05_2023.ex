@@ -8,7 +8,7 @@ defmodule ElixirJourney.Challenges.SeventeenthMay2023 do
   end
 
   # common_keys
-  def map_keys_to_set(map) do
+  defp map_keys_to_set(map) do
     map
     |> Map.keys()
     |> MapSet.new()
