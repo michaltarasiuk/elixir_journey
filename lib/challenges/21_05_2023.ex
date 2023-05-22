@@ -1,4 +1,5 @@
 defmodule ElixirJourney.Challenges.TwentyOnethMay2023 do
+  # unflatten_map
   def split_key(key) do
     key
     |> String.split(".")
@@ -22,5 +23,24 @@ defmodule ElixirJourney.Challenges.TwentyOnethMay2023 do
 
     # %{"a" => %{"b" => %{"0" => 8}}, "c" => "four"}
     unflatten_map(map)
+  end
+
+  # upperize
+  def upperize(term) when is_atom(term) do
+    term
+    |> Atom.to_string()
+    |> String.upcase()
+  end
+
+  def upperize(term) when is_map(term) do
+    term
+    |> Enum.map(fn {key, value} -> {upperize(key), value} end)
+    |> Map.new()
+  end
+
+  def upperize_example do
+    user = %{name: "John", age: 22}
+
+    upperize(user)
   end
 end
