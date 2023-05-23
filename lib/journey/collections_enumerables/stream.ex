@@ -73,4 +73,53 @@ defmodule ElixirJourney.CollectionsAndEumerables.Stream do
     # {[6, 7, 8, 9, 10], [1, 2, 3, 4, 5]}
     {result_1, result_2}
   end
+
+  def drop_every_example do
+    result_1 = Stream.drop_every(1..10, 2) |> Enum.to_list()
+    result_2 = Stream.drop_every(1..1000, 1) |> Enum.to_list()
+    result_3 = Stream.drop_every([1, 2, 3, 4, 5], 0) |> Enum.to_list()
+
+    # {[2, 4, 6, 8, 10], [], [1, 2, 3, 4, 5]}
+    {result_1, result_2, result_3}
+  end
+
+  def drop_while do
+    # [6, 7, 8, 9, 10]
+    1..10
+    |> Stream.drop(&(&1 <= 5))
+    |> Enum.to_list()
+  end
+
+  def duplicate_example do
+    result_1 = Stream.duplicate("Hello", 1) |> Enum.to_list()
+    result_2 = Stream.duplicate({"Hello", "World"}, 0) |> Enum.to_list()
+
+    # {["Hello"], []}
+    {result_1, result_2}
+  end
+
+  def each_example do
+    Stream.each([1, 2, 3], fn x -> send(self(), x) end) |> Enum.to_list()
+
+    # 1
+    receive do: (x when is_integer(x) -> x)
+  end
+
+  def filter_example do
+    list = [1, 2, 3]
+
+    # [2]
+    list
+    |> Stream.filter(fn x -> rem(x, 2) == 0 end)
+    |> Enum.to_list()
+  end
+
+  def flat_map_example do
+    list = [1, 2, 3]
+
+    # [1, 2, 2, 4, 3, 6]
+    list
+    |> Stream.flat_map(fn x -> [x, x * 2] end)
+    |> Enum.to_list()
+  end
 end
