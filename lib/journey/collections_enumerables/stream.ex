@@ -84,7 +84,7 @@ defmodule ElixirJourney.CollectionsAndEumerables.Stream do
   end
 
   def drop_while do
-    # [6, 7, 8, 9, 10]
+    # [6, 7, 8, 9, 10]/
     1..10
     |> Stream.drop(&(&1 <= 5))
     |> Enum.to_list()
