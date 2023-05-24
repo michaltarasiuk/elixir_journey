@@ -122,4 +122,56 @@ defmodule ElixirJourney.CollectionsAndEumerables.Stream do
     |> Stream.flat_map(fn x -> [x, x * 2] end)
     |> Enum.to_list()
   end
+
+  def interspace_example do
+    result_1 = Stream.intersperse([1, 2, 3], 0) |> Enum.to_list()
+    result_2 = Stream.intersperse([1], 0) |> Enum.to_list()
+    result_3 = Stream.intersperse([], 0) |> Enum.to_list()
+
+    # {[1, 0, 2, 0, 3], [1], []}
+    {result_1, result_2, result_3}
+  end
+
+  # TODO
+  def interval_example do
+  end
+
+  # TODO
+  def into_example do
+  end
+
+  # TODO
+  def iterate_example do
+  end
+
+  def map_example do
+    list = [1, 2, 3]
+
+    # [2, 4, 6]
+    list
+    |> Stream.map(fn x -> x * 2 end)
+    |> Enum.to_list()
+  end
+
+  def map_every_example do
+    result_1 = Stream.map_every(1..10, 2, fn x -> x * 2 end) |> Enum.to_list()
+    result_2 = Stream.map_every([1, 2, 3, 4, 5], 1, fn x -> x * 2 end) |> Enum.to_list()
+    result_3 = Stream.map_every(1..5, 0, fn x -> x * 2 end) |> Enum.to_list()
+
+    # {[2, 2, 6, 4, 10, 6, 14, 8, 18, 10], [2, 4, 6, 8, 10], [1, 2, 3, 4, 5]}
+    {result_1, result_2, result_3}
+  end
+
+  def reject_example do
+    list = [1, 2, 3]
+
+    # [1, 3]
+    list
+    |> Stream.reject(fn x -> rem(x, 2) == 0 end)
+    |> Enum.to_list()
+  end
+
+  # TODO
+  def repeatedly_example do
+  end
 end

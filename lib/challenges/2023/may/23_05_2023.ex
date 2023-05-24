@@ -2,7 +2,7 @@ defmodule ElixirJourney.Challenges.TwentyThreethMay2023 do
   # includes_all
   defp includes_all(term_1, term_2) when is_list(term_1) and is_list(term_2) do
     term_2
-    |> Enum.all?(&(Enum.member?(term_1, &1)))
+    |> Enum.all?(&Enum.member?(term_1, &1))
   end
 
   def includes_all_example do
