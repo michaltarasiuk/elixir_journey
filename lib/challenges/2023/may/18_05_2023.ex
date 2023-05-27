@@ -1,10 +1,7 @@
-defmodule ElixirJourney.Challenges.EighteenthMay2023 do
-  # map_to_query_string
-  def map_to_query_string do
-    example_map = %{page: "1", size: "2kg", key: nil}
-
+defmodule ElixirJourney.Challenges.EighteenthMay2023.MapToQueryString do
+  defp map_to_query_string_impl(term) when is_map(term) do
     query_string_value =
-      example_map
+      term
       |> Map.to_list()
       |> Enum.filter(&elem(&1, 1))
       |> Enum.map_intersperse("&", fn tuple ->
@@ -15,7 +12,13 @@ defmodule ElixirJourney.Challenges.EighteenthMay2023 do
       end)
       |> Enum.join()
 
-    # "?page=1&size=2kg"
     "?" <> query_string_value
+  end
+
+  def map_to_query_string_example do
+    example_map = %{page: "1", size: "2kg", key: nil}
+
+    # "?page=1&size=2kg"
+    map_to_query_string_impl(example_map)
   end
 end

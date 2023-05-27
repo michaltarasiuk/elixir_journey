@@ -1,7 +1,5 @@
-defmodule ElixirJourney.Challenges.TwentyTwothMay2023 do
-  # task_from_work
+defmodule ElixirJourney.Challenges.TwentyTwothMay2023.TaskFromWork do
   @item_prefix "item"
-
   @example %{
     appid: "ambassador",
     referralcode: "someCode",
@@ -34,7 +32,11 @@ defmodule ElixirJourney.Challenges.TwentyTwothMay2023 do
     |> String.starts_with?(@item_prefix)
   end
 
-  def task_from_work do
+  def task_from_work_impl do
+    # %{
+    #   "ABC234" => %{"quantity" => "1", "sku" => "cde", "sn" => "ABC234"},
+    #   "XYZ123" => %{"quantity" => "1", "sku" => "abc", "sn" => "XYZ123"}
+    # }
     @example
     |> Enum.to_list()
     |> Enum.filter(&(elem(&1, 0) |> is_item_key()))

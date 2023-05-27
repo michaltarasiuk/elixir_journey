@@ -1,12 +1,11 @@
-defmodule ElixirJourney.Challenges.TwentythMay2023 do
-  # nest
+defmodule ElixirJourney.Challenges.TwentythMay2023.Nest do
   @link :parent_id
 
-  defp nest(items, id \\ nil) when is_list(items) do
+  defp nest_impl(items, id \\ nil) when is_list(items) do
     items
     |> Enum.filter(&(Map.fetch!(&1, @link) === id))
     |> Enum.map(fn item ->
-      children = nest(items, Map.get(item, :id))
+      children = nest_impl(items, Map.get(item, :id))
 
       Map.put(item, :children, children)
     end)
@@ -41,6 +40,6 @@ defmodule ElixirJourney.Challenges.TwentythMay2023 do
     #     parent_id: nil
     #   }
     # ]
-    nest(comments)
+    nest_impl(comments)
   end
 end
