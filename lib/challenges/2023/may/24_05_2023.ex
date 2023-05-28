@@ -11,7 +11,7 @@ defmodule ElixirJourney.Challenges.TwentyFourthMay2023.ConformsTo do
   end
 
   def conforms_to_example do
-    map_example = %{ a: 1, b: 2 };
+    map_example = %{a: 1, b: 2}
     source = [a: fn x -> x > 2 end]
 
     # false
