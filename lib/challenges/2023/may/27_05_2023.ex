@@ -1,0 +1,2 @@
+defmodule ElixirJourney.Challenges.TwentySeventhMay2023 do
+end
