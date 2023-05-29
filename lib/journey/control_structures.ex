@@ -53,5 +53,71 @@ defmodule ElixirJourney.CollectionsAndEumerables.ControlStructures do
   end
 
   defmodule Cond do
+    # "But this will"
+    def example_1 do
+      cond do
+        2 + 2 == 5 ->
+          "This will not be true"
+
+        2 * 2 == 3 ->
+          "Nor this"
+
+        1 + 1 == 2 ->
+          "But this will"
+      end
+    end
+
+    def example_2 do
+      # "Catch all"
+      cond do
+        7 + 1 == 0 -> "Incorrect"
+        true -> "Catch all"
+      end
+    end
+  end
+
+  defmodule IfAndUnless do
+    def example_1 do
+      # "Valid string!"
+      if String.valid?("Hello") do
+        "Valid string!"
+      else
+        "Invalid string."
+      end
+    end
+
+    def example_2 do
+      # "truthy"
+      if "a string value" do
+        "truthy"
+      end
+    end
+
+    def example_3 do
+      #  "not integer"
+      unless is_integer("Hello") do
+        "not integer"
+      end
+    end
+  end
+
+  defmodule With do
+    def example_1 do
+      user = %{first: "Sean", last: "Callan"}
+
+      # "Callan, Sean"
+      with {:ok, first} <- Map.fetch(user, :first),
+           {:ok, last} <- Map.fetch(user, :last),
+           do: last <> ", " <> first
+    end
+
+    def example_2 do
+      user = %{first: "Sean", last: "Callan"}
+
+      # "Callan, Sean"
+      with {:ok, first} <- Map.fetch(user, :first), {:ok, last} <- Map.fetch(user, :last) do
+        last <> ", " <> first
+      end
+    end
   end
 end

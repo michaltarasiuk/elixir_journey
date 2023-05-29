@@ -80,6 +80,7 @@ defmodule ElixirJourney.Functions do
   # ** (CompileError) iex:8: def hello/2 defines defaults multiple times. Elixir allows defaults to be declared once per definition.
   defmodule Greeter_6 do
     def hello(names, language_code \\ "en")
+
     def hello(names, language_code) when is_list(names) do
       names = Enum.join(names, ", ")
 
