@@ -100,24 +100,4 @@ defmodule ElixirJourney.CollectionsAndEumerables.ControlStructures do
       end
     end
   end
-
-  defmodule With do
-    def example_1 do
-      user = %{first: "Sean", last: "Callan"}
-
-      # "Callan, Sean"
-      with {:ok, first} <- Map.fetch(user, :first),
-           {:ok, last} <- Map.fetch(user, :last),
-           do: last <> ", " <> first
-    end
-
-    def example_2 do
-      user = %{first: "Sean", last: "Callan"}
-
-      # "Callan, Sean"
-      with {:ok, first} <- Map.fetch(user, :first), {:ok, last} <- Map.fetch(user, :last) do
-        last <> ", " <> first
-      end
-    end
-  end
 end
