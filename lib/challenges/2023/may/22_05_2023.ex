@@ -14,19 +14,19 @@ defmodule ElixirJourney.Challenges.TwentyTwothMay2023.TaskFromWork do
     purchase: %{posid: "abc-1234", operationid: "123/456/789"}
   }
 
-  defp get_id(key) when is_atom(key) do
+  defp get_id(key) do
     key
     |> Atom.to_string()
     |> String.replace(~r/\w+-\w+-(\w+)/, "\\g{1}")
   end
 
-  defp get_name(key) when is_atom(key) do
+  defp get_name(key) do
     key
     |> Atom.to_string()
     |> String.replace(~r/\w+-(\w+)-\w+/, "\\g{1}")
   end
 
-  defp is_item_key(key) when is_atom(key) do
+  defp is_item_key(key) do
     key
     |> Atom.to_string()
     |> String.starts_with?(@item_prefix)

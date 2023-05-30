@@ -1,6 +1,6 @@
 defmodule ElixirJourney.Challenges.SeventeenthMay2023 do
   defmodule TruthCheckCollection do
-    defp truth_check_collection_impl(term_1, term_2) when is_list(term_1) do
+    defp truth_check_collection_impl(term_1, term_2) do
       Enum.all?(term_1, &Map.has_key?(&1, term_2))
     end
 
@@ -19,7 +19,7 @@ defmodule ElixirJourney.Challenges.SeventeenthMay2023 do
       |> MapSet.new()
     end
 
-    defp common_keys_impl(term_1, term_2) when is_map(term_1) and is_map(term_2) do
+    defp common_keys_impl(term_1, term_2) do
       MapSet.intersection(map_keys_to_set(term_1), map_keys_to_set(term_2)) |> MapSet.to_list()
     end
 

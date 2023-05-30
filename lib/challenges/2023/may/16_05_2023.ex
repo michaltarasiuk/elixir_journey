@@ -17,7 +17,7 @@ defmodule ElixirJourney.Challenges.SixteenthMay2023.CsvToJSON do
     |> List.to_tuple()
   end
 
-  defp csv_to_json_impl(term) when is_binary(term) do
+  defp csv_to_json_impl(term) do
     titles = get_titles(term)
 
     term

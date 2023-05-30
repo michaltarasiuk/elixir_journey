@@ -1,6 +1,6 @@
 defmodule ElixirJourney.Challenges.TwentyThreethMay2023 do
   defmodule IncludesAll do
-    defp includes_all_impl(term_1, term_2) when is_list(term_1) and is_list(term_2) do
+    defp includes_all_impl(term_1, term_2) do
       term_2
       |> Enum.all?(&Enum.member?(term_1, &1))
     end

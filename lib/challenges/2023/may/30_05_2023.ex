@@ -1,6 +1,6 @@
 defmodule ElixirJourney.Challenges.ThirtiethMay2023 do
   defmodule OverSome do
-    defp over_some_impl(value, predicates) when is_list(predicates) do
+    defp over_some_impl(value, predicates) do
       predicates
       |> Enum.filter(&is_function/1)
       |> Enum.any?(fn predicate -> predicate.(value) end)

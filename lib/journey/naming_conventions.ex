@@ -1,5 +1,5 @@
-defmodule ElixirJourney.Sigils.NamingConventions do
-  defmodule Journey.NamingConventions do
+defmodule ElixirJourney.NamingConventions do
+  defmodule Underscore do
     def _wont_be_imported do
       :oops
     end

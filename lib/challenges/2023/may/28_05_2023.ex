@@ -1,6 +1,6 @@
 defmodule ElixirJourney.Challenges.TwentyEighthMay2023 do
   defmodule Invert do
-    defp invert_impl(map) when is_map(map) do
+    defp invert_impl(map) do
       map
       |> Enum.map(fn {key, value} -> {value, key} end)
       |> Map.new()
@@ -15,7 +15,7 @@ defmodule ElixirJourney.Challenges.TwentyEighthMay2023 do
   end
 
   defmodule PullAt do
-    defp pull_at_impl(list, indexes) when is_list(list) and is_list(indexes) do
+    defp pull_at_impl(list, indexes) do
       list
       |> Enum.with_index()
       |> Enum.flat_map(fn {value, index} ->

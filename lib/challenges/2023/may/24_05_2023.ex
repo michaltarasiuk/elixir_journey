@@ -1,5 +1,5 @@
 defmodule ElixirJourney.Challenges.TwentyFourthMay2023.ConformsTo do
-  defp conforms_to_impl(map, source) when is_map(map) and is_list(source) do
+  defp conforms_to_impl(map, source) do
     map
     |> Enum.to_list()
     |> Enum.filter(&Keyword.has_key?(source, elem(&1, 0)))

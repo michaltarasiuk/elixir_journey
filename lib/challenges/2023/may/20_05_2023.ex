@@ -1,7 +1,7 @@
 defmodule ElixirJourney.Challenges.TwentythMay2023.Nest do
   @link :parent_id
 
-  defp nest_impl(items, id \\ nil) when is_list(items) do
+  defp nest_impl(items, id \\ nil) do
     items
     |> Enum.filter(&(Map.fetch!(&1, @link) === id))
     |> Enum.map(fn item ->

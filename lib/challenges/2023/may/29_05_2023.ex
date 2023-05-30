@@ -15,7 +15,7 @@ defmodule ElixirJourney.Challenges.TwentyNinethMay2023.FindKey do
     end
   end
 
-  defp find_key_impl(map, predicate_value) when is_map(map) do
+  defp find_key_impl(map, predicate_value) do
     Enum.find_value(map, fn {key, value} ->
       if predicate(value, predicate_value) do
         key

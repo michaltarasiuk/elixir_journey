@@ -1,5 +1,5 @@
 defmodule ElixirJourney.Challenges.EighteenthMay2023.MapToQueryString do
-  defp map_to_query_string_impl(term) when is_map(term) do
+  defp map_to_query_string_impl(term) do
     query_string_value =
       term
       |> Map.to_list()

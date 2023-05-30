@@ -1,6 +1,6 @@
 defmodule ElixirJourney.Challenges.FifteenthMay2023 do
   defmodule RenameKeys do
-    defp rename_keys_impl(term_1, term_2) when is_map(term_1) and is_map(term_2) do
+    defp rename_keys_impl(term_1, term_2) do
       {common, rest} = Map.split(term_1, Map.keys(term_2))
 
       Map.merge(term_2, common, fn _k, v_1, v_2 -> {v_1, v_2} end)
@@ -50,7 +50,7 @@ defmodule ElixirJourney.Challenges.FifteenthMay2023 do
       end
     end
 
-    defp compact_impl(term) when is_map(term) do
+    defp compact_impl(term) do
       term
       |> Map.to_list()
       |> Enum.flat_map(fn {key, value} ->
@@ -70,7 +70,7 @@ defmodule ElixirJourney.Challenges.FifteenthMay2023 do
   end
 
   defmodule Unwind do
-    defp unwind_impl(term, key) when is_map(term) do
+    defp unwind_impl(term, key) do
       term
       |> Map.fetch!(key)
       |> Enum.map(&Map.put(term, key, &1))
