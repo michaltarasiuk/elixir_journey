@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Challenges.TwentySeventhMay2023.DefaultsDeep do
+defmodule ElixirJourney.Challenges.TwentySeventhOfMay2023.DefaultsDeep do
   defp defaults_deep_impl(map, source) when is_map(map) and is_map(source) do
     Map.merge(map, source, fn _key, v1, v2 -> defaults_deep_impl(v1, v2) end)
   end

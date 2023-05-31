@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Challenges.TwentyFourthMay2023.ConformsTo do
+defmodule ElixirJourney.Challenges.TwentyFourthOfMay2023.ConformsTo do
   defp conforms_to_impl(map, source) do
     map
     |> Enum.to_list()

@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Challenges.NineteenthMay2023.FlattenMap do
+defmodule ElixirJourney.Challenges.NineteenthOfMay2023.FlattenMap do
   defp to_flatten_map(term, _key) when is_map(term) do
     term |> flatten_map_impl()
   end

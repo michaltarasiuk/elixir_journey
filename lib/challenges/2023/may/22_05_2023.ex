@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Challenges.TwentyTwothMay2023.TaskFromWork do
+defmodule ElixirJourney.Challenges.TwentySecondOfMay2023.TaskFromWork do
   @item_prefix "item"
   @example %{
     appid: "ambassador",

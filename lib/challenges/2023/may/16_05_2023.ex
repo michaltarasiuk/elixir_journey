@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Challenges.SixteenthMay2023.CsvToJSON do
+defmodule ElixirJourney.Challenges.SixteenthOfMay2023.CsvToJSON do
   @none ""
   @line "\n"
   @delimeter ","

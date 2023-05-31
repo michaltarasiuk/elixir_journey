@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Challenges.TwentyEighthMay2023 do
+defmodule ElixirJourney.Challenges.TwentyEighthOfMay2023 do
   defmodule Invert do
     defp invert_impl(map) do
       map

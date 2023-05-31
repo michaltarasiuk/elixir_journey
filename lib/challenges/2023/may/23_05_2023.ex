@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Challenges.TwentyThreethMay2023 do
+defmodule ElixirJourney.Challenges.TwentyThreethOfMay2023 do
   defmodule IncludesAll do
     defp includes_all_impl(term_1, term_2) do
       term_2

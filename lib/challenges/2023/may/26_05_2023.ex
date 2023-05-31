@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Challenges.TwentySixthMay2023.ZipMapDeep do
+defmodule ElixirJourney.Challenges.TwentySixthOfMay2023.ZipMapDeep do
   defp get_key(path) do
     Enum.map(path, &Access.key(&1, %{}))
   end

@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Challenges.TwentyFivethMay2023.Partition do
+defmodule ElixirJourney.Challenges.TwentyFivethOfMay2023.Partition do
   @example [
     %{user: "barney", age: 36, active: false},
     %{user: "fred", age: 40, active: true},

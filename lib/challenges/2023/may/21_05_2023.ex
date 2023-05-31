@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Challenges.TwentyOnethMay2023 do
+defmodule ElixirJourney.Challenges.TwentyFirstOfMay2023 do
   defmodule UnflattenMap do
     defp split_key(key) do
       key

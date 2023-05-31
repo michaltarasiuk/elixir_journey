@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Challenges.FifteenthMay2023 do
+defmodule ElixirJourney.Challenges.FifteenthOfMay2023 do
   defmodule RenameKeys do
     defp rename_keys_impl(term_1, term_2) do
       {common, rest} = Map.split(term_1, Map.keys(term_2))

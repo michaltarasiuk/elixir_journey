@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Challenges.SeventeenthMay2023 do
+defmodule ElixirJourney.Challenges.SeventeenthOfMay2023 do
   defmodule TruthCheckCollection do
     defp truth_check_collection_impl(term_1, term_2) do
       Enum.all?(term_1, &Map.has_key?(&1, term_2))

@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Challenges.TwentythMay2023.Nest do
+defmodule ElixirJourney.Challenges.TwentythOfMay2023.Nest do
   @link :parent_id
 
   defp nest_impl(items, id \\ nil) do

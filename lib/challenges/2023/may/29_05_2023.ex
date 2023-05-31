@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Challenges.TwentyNinethMay2023.FindKey do
+defmodule ElixirJourney.Challenges.TwentyNinethOfMay2023.FindKey do
   @example %{
     barney: %{age: 36, active: true},
     fred: %{age: 40, active: false},
