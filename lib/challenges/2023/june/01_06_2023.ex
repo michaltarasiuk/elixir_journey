@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Challenges.FirstOfJune2023 do
+defmodule ElixirJourney.Challenges.FirstOfJune2023.ForumTask do
   @trades %{
     "3QvxP6YFBKpWJSMAfYtL8Niv8KmmKsnpb9uQwQpg8QN2" => [
       %{
