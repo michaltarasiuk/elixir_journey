@@ -679,35 +679,93 @@ defmodule ElixirJourney.CollectionsAndEumerables.Enum do
   def split_with_example do
   end
 
-  # TODO
   def sum_example do
+    # list
+    result_1 = Enum.sum([1, 2, 3])
+
+    # range
+    result_2 = Enum.sum(1..10)
+    result_3 = Enum.sum(1..10//2)
+
+    # {6, 55, 25}
+    {result_1, result_2, result_3}
   end
 
-  # TODO
   def take_example do
+    # list
+    result_1 = Enum.take([1, 2, 3], 2)
+
+    # map
+    result_2 = Enum.take(%{a: 1, b: 2}, 1)
+
+    # range
+    result_3 = Enum.take(1..3, 2)
+
+    # {[1, 2], [a: 1], [1, 2]}
+    {result_1, result_2, result_3}
   end
 
-  # TODO
   def take_every_example do
+    # list
+    result_1 = Enum.take_every([1, 2, 3], 0)
+
+    # map
+    result_2 = Enum.take_every(%{a: 1, b: 2}, 2)
+
+    # range
+    result_3 = Enum.take_every(1..3, 1)
+
+    # {[], [a: 1], [1, 2, 3]}
+    {result_1, result_2, result_3}
   end
 
-  # TODO
   def take_random_example do
+    # list
+    result_1 = Enum.take_random([1, 2, 3], 1)
+
+    # map
+    result_2 = Enum.take_random(%{a: 1, b: 2, c: 3}, 1)
+
+    # range
+    result_3 = Enum.take_random(1..3, 1)
+
+    # example: {[1], [c: 3], [1]}
+    {result_1, result_2, result_3}
   end
 
-  # TODO
   def take_while do
+    # list
+    result_1 = Enum.take_while([1, 2, 3], fn x -> x < 3 end)
+
+    # map
+    result_2 = Enum.take_while(%{a: 1, b: 2, c: 3}, fn {_key, value} -> value < 3 end)
+
+    # range
+    result_3 = Enum.take_while(1..3, fn x -> x < 3 end)
+
+    # {[1, 2], [a: 1, b: 2], [1, 2]}
+    {result_1, result_2, result_3}
   end
 
-  # TODO
   def uniq_example do
+    # [1, 2, 3]
+    Enum.uniq([1, 2, 3, 3, 2, 1])
   end
 
-  # TODO
   def uniq_by_example do
+    result_1 = Enum.uniq_by([{1, :x}, {2, :y}, {1, :z}], fn {x, _} -> x end)
+    result_2 = Enum.uniq_by([a: {:tea, 2}, b: {:tea, 2}, c: {:coffee, 1}], fn {_, y} -> y end)
+
+    # {[{1, :x}, {2, :y}], [a: {:tea, 2}, c: {:coffee, 1}]}
+    {result_1, result_2}
   end
 
   def unzip_example do
+    result_1 = Enum.unzip([{:a, 1}, {:b, 2}, {:c, 3}])
+    result_2 = Enum.unzip(%{a: 1, b: 2})
+
+    # {{[:a, :b, :c], [1, 2, 3]}, {[:a, :b], [1, 2]}}
+    {result_1, result_2}
   end
 
   def with_index_example do
@@ -747,19 +805,44 @@ defmodule ElixirJourney.CollectionsAndEumerables.Enum do
     {result_1, result_2}
   end
 
-  # TODO
   def zip_reduce_3_example do
+    result_1 =
+      Enum.zip_reduce([[1, 1], [2, 2], [3, 3]], [], fn elements, acc ->
+        [List.to_tuple(elements) | acc]
+      end)
+
+    result_2 =
+      Enum.zip_reduce([[1, 2], %{a: 3, b: 4}, [5, 6]], [], fn elements, acc ->
+        [List.to_tuple(elements) | acc]
+      end)
+
+    {result_1, result_2}
   end
 
-  # TODO
   def zip_reduce_4_example do
+    result_1 = Enum.zip_reduce([1, 2], [3, 4], 0, fn x, y, acc -> x + y + acc end)
+    result_2 = Enum.zip_reduce([1, 2], [3, 4], [], fn x, y, acc -> [x + y | acc] end)
+
+    # {10, [6, 4]}
+    {result_1, result_2}
   end
 
   # TODO
   def zip_with_2_example do
   end
 
-  # TODO
   def zip_with_3_example do
+    # list
+    result_1 = Enum.zip_with([1, 2], [3, 4], fn a, b -> {b, a} end)
+    result_2 = Enum.zip_with([1, 2], [3, 4], fn a, b -> a + b end)
+
+    # map
+    left = %{:a => 1, 1 => 3}
+    right = %{:a => 1, :b => :c}
+
+    result_3 = Enum.zip(left, right)
+
+    # {[{3, 1}, {4, 2}], [4, 6], [{{1, 3}, {:a, 1}}, {{:a, 1}, {:b, :c}}]}
+    {result_1, result_2, result_3}
   end
 end
