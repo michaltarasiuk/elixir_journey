@@ -31,13 +31,13 @@ defmodule ElixirJourney.CollectionsAndEumerables.ControlStructures do
     end
 
     def example_2 do
-      x = 1
+      # x = 1
 
       # "Will match"
-      case 10 do
-        ^x -> "Won't match"
-        _ -> "Will match"
-      end
+      # case 10 do
+      #   ^x -> "Won't match"
+      #   _ -> "Will match"
+      # end
     end
 
     def example_3 do

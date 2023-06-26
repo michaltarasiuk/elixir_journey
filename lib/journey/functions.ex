@@ -15,19 +15,19 @@ defmodule ElixirJourney.Functions do
   end
 
   def pattern_matching do
-    handle_result = fn
-      {:ok, result} -> IO.puts("Handling result...")
-      {:ok, _} -> IO.puts("This would be never run as previous will be matched beforehand.")
-      {:error} -> IO.puts("An error has occurred!")
-    end
+    # handle_result = fn
+    #   {:ok, result} -> IO.puts("Handling result...")
+    #   {:ok, _} -> IO.puts("This would be never run as previous will be matched beforehand.")
+    #   {:error} -> IO.puts("An error has occurred!")
+    # end
 
-    some_result = 1
+    # some_result = 1
 
     # Handling result...
     # An error has occurred!
 
     # {:ok, :ok}
-    {handle_result.({:ok, some_result}), handle_result.({:error})}
+    # {handle_result.({:ok, some_result}), handle_result.({:error})}
   end
 
   defmodule Length do
