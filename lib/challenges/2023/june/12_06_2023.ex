@@ -31,11 +31,11 @@ defmodule ElixirJourney.Challenges.TwelvethOfJune2023.TypescriptParser do
     |> Enum.join(" | ")
   end
 
-  def actions([]) do
+  defp actions([]) do
     []
   end
 
-  def actions(specs) do
+  defp actions(specs) do
     specs
     |> Enum.flat_map(fn
       {:handle_call, {action_name, action_value}} ->
