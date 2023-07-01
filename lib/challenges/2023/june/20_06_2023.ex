@@ -3,7 +3,8 @@ defmodule ElixirJourney.Challenges.TwentythOfJune2023.PeopleStatistics do
     count_a_names = Enum.count(people, fn %{name: name} -> String.starts_with?(name, "A") end)
 
     average_age =
-      Enum.reduce(people, 0, fn %{age: age}, acc -> age + acc end)
+      people
+      |> Enum.reduce(0, fn %{age: age}, acc -> age + acc end)
       |> then(&(&1 / length(people)))
 
     %{
