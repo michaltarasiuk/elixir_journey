@@ -41,4 +41,8 @@ defmodule ElixirJourney.Challenges.FivethOfJuly2023.TaskManager do
 
     :ok
   end
+
+  def stop do
+    Agent.stop(__MODULE__)
+  end
 end
