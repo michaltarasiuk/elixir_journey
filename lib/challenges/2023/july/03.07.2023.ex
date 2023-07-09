@@ -25,9 +25,13 @@ defmodule ElixirJourney.Challenges.ThirdOfJuly2023 do
       value
     end
 
+    defp values(_value) do
+      0
+    end
+
     defp sum_map_values(map) do
       values(map)
-      |> Enum.map(&values(&1))
+      |> Enum.map(&values/1)
       |> List.flatten()
       |> Enum.sum()
     end
@@ -36,7 +40,8 @@ defmodule ElixirJourney.Challenges.ThirdOfJuly2023 do
       map = %{
         "a" => 1,
         "b" => [2, 3],
-        "c" => %{"d" => 4, "e" => [5, 6]}
+        "c" => %{"d" => 4, "e" => [5, 6]},
+        "d" => "string"
       }
 
       # 21
