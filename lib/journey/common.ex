@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Trivia do
+defmodule ElixirJourney.Common do
   def string_pattern_matching do
     "foo" <> x = "foobar"
 
@@ -7,7 +7,7 @@ defmodule ElixirJourney.Trivia do
   end
 
   def multiple_references_of_the_same_attribute do
-    defmodule ElixirJourney.Trivia.Attribute do
+    defmodule ElixirJourney.Common.Attribute do
       @files %{
         example1: File.read!("lib/example1.data"),
         example2: File.read!("lib/example2.data")
