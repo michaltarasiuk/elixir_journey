@@ -37,4 +37,28 @@ defmodule ElixirJourney.Challenges.EleventhOfJuly2023 do
       count_key_occurrences([%{a: 1, b: 2}, %{b: 1, c: 3}, %{d: 2, f: 4}])
     end
   end
+
+  defmodule ConcatenateValuesByKey do
+    defp concatenate_values_by_key(maps) do
+      Enum.reduce(
+        maps,
+        %{},
+        &Map.merge(&1, &2, fn _key, value_1, value_2 -> "#{value_2} #{value_1}" end)
+      )
+    end
+
+    def example do
+      # %{
+      #   a: "Hello Elixir",
+      #   b: "World is",
+      #   c: "Challenge",
+      #   d: "fun"
+      # }
+      concatenate_values_by_key([
+        %{a: "Hello", b: "World"},
+        %{a: "Elixir", c: "Challenge"},
+        %{b: "is", d: "fun"}
+      ])
+    end
+  end
 end
