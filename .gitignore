@@ -24,3 +24,6 @@ elixir_journey-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Files
+.DS_Store
