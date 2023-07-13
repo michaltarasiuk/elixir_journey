@@ -8,4 +8,11 @@ defmodule ElixirJourney.Challenges.Toolbelt do
       10 -> :ok
     end
   end
+
+  def push(list, element) do
+    list
+    |> Enum.reverse()
+    |> then(&[element | &1])
+    |> Enum.reverse()
+  end
 end

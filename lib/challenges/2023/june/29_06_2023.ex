@@ -1,10 +1,5 @@
 defmodule ElixirJourney.Challenges.TwentyNinethOfJune2023.FlattenMap do
-  defp push(list, new_item) do
-    list
-    |> Enum.reverse()
-    |> then(&[new_item | &1])
-    |> Enum.reverse()
-  end
+  alias ElixirJourney.Challenges.Toolbelt
 
   defp flatten_map(map) do
     do_flatten_map(map, [])
@@ -12,7 +7,7 @@ defmodule ElixirJourney.Challenges.TwentyNinethOfJune2023.FlattenMap do
 
   defp do_flatten_map(map, keys) do
     Enum.reduce(map, %{}, fn {key, value}, acc ->
-      new_keys = push(keys, key)
+      new_keys = Toolbelt.push(keys, key)
 
       cond do
         is_map(value) ->
