@@ -11,6 +11,18 @@ defmodule ElixirJourney.Challenges.TenthOfJuly2023.CSVParser do
   def example do
     file = Path.expand("./data.csv", __DIR__) |> File.read!()
 
+    # [
+    #   %{
+    #     "age" => "25",
+    #     "city" => "New York",
+    #     "name" => "John"
+    #   },
+    #   %{
+    #     "age" => "30",
+    #     "city" => "San Francisco",
+    #     "name" => "Jane"
+    #   }
+    # ]
     parse_csv(file)
   end
 end
