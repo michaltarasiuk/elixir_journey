@@ -6,7 +6,7 @@ defmodule ElixirJourney.Types.Functions do
     end)
   end
 
-  def anonymous_functions do
+  def anonymous_functions_example do
     sum = fn x, y -> x + y end
     exponentiation = &(&1 ** &1)
 
@@ -14,20 +14,52 @@ defmodule ElixirJourney.Types.Functions do
     {sum.(1, 2), exponentiation.(2)}
   end
 
-  def pattern_matching do
-    # handle_result = fn
-    #   {:ok, result} -> IO.puts("Handling result...")
-    #   {:ok, _} -> IO.puts("This would be never run as previous will be matched beforehand.")
-    #   {:error} -> IO.puts("An error has occurred!")
-    # end
+  def identity_example do
+    # [~c"aaa", ~c"bb", ~c"cccc", ~c"d"]
+    ~c"abcdaabccc" |> Enum.sort() |> Enum.chunk_by(&Function.identity/1)
+  end
 
-    # some_result = 1
+  def info_1_example do
+    # [module: String, name: :length, arity: 1, env: [], type: :external]
+    Function.info(&String.length/1)
+  end
+
+  def info_2_example do
+    # {:module, String}
+    Function.info(&String.length/1, :module)
+  end
+end
+
+defmodule ElixirJourney.Types.Functions.Capture do
+  def capture_operator_example do
+    add = &Kernel.+/2
+
+    list_elements_to_string = &Enum.map(&1, fn element -> Integer.to_string(element) end)
+
+    # {3, ["1", "2", "3", "4", "5"]}
+    {add.(1, 2), list_elements_to_string.([1, 2, 3, 4, 5])}
+  end
+
+  def capture_example do
+    # &String.length/1
+    Function.capture(String, :length, 1)
+  end
+end
+
+defmodule ElixirJourney.Types.Functions.PatternMatching do
+  def pattern_matching do
+    handle_result = fn
+      {:ok, _result} -> IO.puts("Handling result...")
+      {:error} -> IO.puts("An error has occurred!")
+    end
+
+    some_result = 1
 
     # Handling result...
     # An error has occurred!
 
-    # {:ok, :ok}
-    # {handle_result.({:ok, some_result}), handle_result.({:error})}
+    {:ok, :ok}
+    {handle_result.({:ok, some_result}), handle_result.({:error})}
   end
 
   defmodule Length do
