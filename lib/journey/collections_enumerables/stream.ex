@@ -20,8 +20,24 @@ defmodule ElixirJourney.CollectionsAndEumerables.Stream do
     {result_1, result_2, result_3}
   end
 
-  # TODO
   def chunk_while_example do
+    # [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10]]
+    1..10
+    |> Stream.chunk_while(
+      [],
+      fn element, chunk ->
+        if rem(element, 2) == 0 do
+          {:cont, Enum.reverse([element | chunk]), []}
+        else
+          {:cont, [element | chunk]}
+        end
+      end,
+      fn
+        [] -> {:cont, []}
+        acc -> {:cont, Enum.reverse(acc), []}
+      end
+    )
+    |> Enum.to_list()
   end
 
   def concat_1_example do
@@ -132,16 +148,29 @@ defmodule ElixirJourney.CollectionsAndEumerables.Stream do
     {result_1, result_2, result_3}
   end
 
-  # TODO
   def interval_example do
+    # 0
+    # 1
+    # 2
+    # 3
+    # 4
+    # 5
+    # 6
+    # 7
+    # 8
+    # 9
+    # 10
+    Stream.interval(1000) |> Stream.each(fn number -> IO.puts(number) end) |> Stream.run()
   end
 
-  # TODO
   def into_example do
+    # [{0, 1}, {1, 2}, {2, 3}]
+    1..3 |> Enum.with_index(&{&2, &1}) |> Stream.into(%{}) |> Enum.to_list()
   end
 
-  # TODO
   def iterate_example do
+    # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    0 |> Stream.iterate(&(&1 + 1)) |> Enum.take(10)
   end
 
   def map_example do
@@ -171,7 +200,23 @@ defmodule ElixirJourney.CollectionsAndEumerables.Stream do
     |> Enum.to_list()
   end
 
-  # TODO
   def repeatedly_example do
+    # [82, 51, 47, 50, 16, 25, 9, 44, 30, 56]
+    Stream.repeatedly(fn -> Enum.random(1..100) end) |> Enum.take(10)
+  end
+
+  def with_index do
+    # [{"a", 0}, {"b", 1}, {"c", 2}, {"d", 3}]
+    Stream.with_index(["a", "b", "c", "d"]) |> Enum.to_list()
+  end
+
+  def zip_example do
+    # [{1, "a", -8}, {2, "b", -9}, {3, "c", -10}, {4, "d", -11}]
+    Stream.zip([1..10, ["a", "b", "c", "d"], -8..-20]) |> Enum.to_list()
+  end
+
+  def zip_2_example do
+    # [{1, "a"}, {2, "b"}, {3, "c"}, {4, "d"}]
+    Stream.zip(1..10, ["a", "b", "c", "d"]) |> Enum.to_list()
   end
 end
