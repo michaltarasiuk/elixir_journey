@@ -1,11 +1,4 @@
-defmodule ElixirJourney.Common do
-  def string_pattern_matching do
-    "foo" <> x = "foobar"
-
-    # "bar"
-    x
-  end
-
+defmodule ElixirJourney.Kernel.Modules do
   def multiple_references_of_the_same_attribute do
     defmodule ElixirJourney.Common.Attribute do
       @files %{

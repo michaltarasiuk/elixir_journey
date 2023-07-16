@@ -1,4 +1,4 @@
-defmodule ElixirJourney.CollectionsAndEumerables.ControlStructures do
+defmodule ElixirJourney.Kernel.ControlStructures do
   defmodule FunctionPatternMatching do
     def example_1 do
       handle_result = fn

@@ -1,4 +1,4 @@
-defmodule ElixirJourney.CollectionsAndEumerables.ControlStructures.With do
+defmodule ElixirJourney.Kernel.ControlStructures.With do
   def example_1 do
     user = %{first: "Sean", last: "Callan"}
 

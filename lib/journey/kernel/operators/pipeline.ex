@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Operators.Pipeline do
+defmodule ElixirJourney.Kernel.Operators.Pipeline do
   def example_1 do
     [1, [2], 3]
     |> List.flatten()

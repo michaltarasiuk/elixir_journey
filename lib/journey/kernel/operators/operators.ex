@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Operators do
+defmodule ElixirJourney.Kernel.Operators do
   @module_attribute :value
 
   def text_based_match_example do

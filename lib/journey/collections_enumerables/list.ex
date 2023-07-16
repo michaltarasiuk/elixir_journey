@@ -1,4 +1,4 @@
-defmodule ElixirJourney.List do
+defmodule ElixirJourney.CollectionsAndEumerables.List do
   # TODO
   def ascii_printable_example do
   end

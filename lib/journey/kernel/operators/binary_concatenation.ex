@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Operators.BinaryConcatenation do
+defmodule ElixirJourney.Kernel.Operators.BinaryConcatenation do
   def example_1 do
     # "foobar"
     "foo" <> "bar"

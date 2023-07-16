@@ -1,4 +1,4 @@
-defmodule ElixirJourney.Functions do
+defmodule ElixirJourney.Types.Functions do
   def overview do
     Enum.__info__(:functions)
     |> Enum.each(fn {function, arity} ->
